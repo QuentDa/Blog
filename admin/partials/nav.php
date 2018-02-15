@@ -1,9 +1,4 @@
 ﻿<?php
-if(isset($_GET['logout']) && isset($_SESSION['user'])){
-    session_destroy();
-    header('location: ../index.php');
-    exit;
-}
 	$nbUsers = $db->query("SELECT COUNT(*) FROM user")->fetchColumn();
 	$nbCategories = $db->query("SELECT COUNT(*) FROM category")->fetchColumn();
 	$nbArticles = $db->query("SELECT COUNT(*) FROM article")->fetchColumn();
