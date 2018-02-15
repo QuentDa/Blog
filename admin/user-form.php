@@ -1,5 +1,10 @@
 <?php
 require_once '../tools/_db.php';
+if (isset($_SESSION['is_admin']) AND ($_SESSION['is_admin'] != 1) OR empty($_SESSION['user'])){
+    header('location: ../index.php');
+    exit;
+}
+
 
 //Si $_POST['save'] existe, cela signifie que c'est un ajout d'utilisateur
 if(isset($_POST['save'])){

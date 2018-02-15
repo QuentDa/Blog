@@ -1,4 +1,9 @@
-<?php require_once '../tools/_db.php'; ?>
+<?php require_once '../tools/_db.php';
+if (isset($_SESSION['is_admin']) AND ($_SESSION['is_admin'] != 1) OR empty($_SESSION['user'])){
+    header('location: ../index.php');
+    exit;
+}
+?>
 
 
 <?php

@@ -1,4 +1,9 @@
-﻿<?php require_once 'tools/_db.php'; ?>
+<?php require_once 'tools/_db.php';
+if(isset($_GET['logout']) && isset($_SESSION['user'])){
+    session_destroy();
+    header('location:index.php');
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -22,31 +27,25 @@
 					<section class="latest_articles">
 						<header class="mb-4"><h1>Les 3 derniers articles :</h1></header>
 
-						<!-- les trois derniers articles -->
-
-						<?php
-                        $query = $db->query('
-						SELECT art.* , cat.name AS category_name
-						FROM article art
-						JOIN category cat
-						ON art.category_id = cat.id
-						WHERE is_published = 1
-						ORDER BY created_at
-						DESC LIMIT 0, 3');
-                        ?>
-
+						<?php 
+						//requête avec jointure entre deux tables (article et category) sur le champ "category_id" du côté de la table "article", et "id" du côté de la table "category"
+						//cette requête lie diréctement le nom de la catégorie associée à chaque article, sans avoir à refaire une requête au moment de l'affichage de chaque article
+						//"category_name" sera l'alias du champ "category.name". L'alias est utilisé pour éviter les conflits dans le cas ou deux champs de deux tables différentes auraient le même nom
+						$query = $db->query('
+						SELECT article.* , category.name AS category_name
+						FROM article
+						JOIN category 
+						ON article.category_id = category.id
+						WHERE is_published = 1 
+						ORDER BY created_at DESC 
+						LIMIT 0, 3'); 
+						?>
 
 						<?php while($article = $query->fetch()): ?>
 						<article class="mb-4">
 							<h2><?php echo $article['title']; ?></h2>
-
-							<?php
-								//selection de la catégorie liée à l'article en cours d'affichage par la boucle
-								$categoryQuery = $db->query('SELECT name FROM category WHERE id = ' . $article['category_id']);
-								$articleCategoryName = $categoryQuery->fetchColumn();
-							?>
-							
-							<b class="article-category">[<?php echo $articleCategoryName; ?>]</b>
+							<!-- ici la clé "category_name" (alias de "category.name" dans la requête) a pour valeur la nom de la catégorie -->
+							<b class="article-category">[<?php echo $article['category_name']; ?>]</b>
 							
 							<span class="article-date">Créé le <?php echo $article['created_at']; ?></span>
 							<div class="article-content">
@@ -70,20 +69,3 @@
 		</div>
 	</body>
 </html>
-
-
-
-
-
-
-
-<?php 
-/*$query = $db->query('
-SELECT a.* , c.name AS category_name
-FROM article a
-JOIN category c ON a.category_id = c.id
-WHERE is_published = 1 
-ORDER BY created_at 
-DESC LIMIT 0, 3');*/
-?>
-<!--<b class="article-category">[<?php echo $article['category_name']; ?>]</b>-->

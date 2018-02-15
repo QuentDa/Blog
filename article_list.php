@@ -6,16 +6,16 @@ if(isset($_GET['category_id']) ){ //si une catégorie est demandée via un id en
 	
 	//selection de la catégorie en base de données
 	$query = $db->prepare('SELECT * FROM category WHERE id = ?');
-	$result = $query->execute( array($_GET['category_id']) );
+	$query->execute( array($_GET['category_id']) );
 	
 	$currentCategory = $query->fetch();
 	
 	if($currentCategory){ //Si la catégorie demandé existe bien
 		
-		//récupération des articles publiés qui sont liés à la catégorie
+		//récupération des articles publiés qui sont liés à la catégorie ET publiés
 		$query = $db->prepare('SELECT * FROM article WHERE category_id = ? AND is_published = 1 ORDER BY created_at DESC');
 		$result = $query->execute( array($_GET['category_id']) );
-		
+		//fetchAll() renvoie un ensemble d'enregistrements (tableau), le résultat sera à traiter avec un boucle foreach
 		$articles = $query->fetchAll();
 	}
 	else{ //si la catégorie n'existe pas, redirection vers la page d'accueil
@@ -27,7 +27,10 @@ if(isset($_GET['category_id']) ){ //si une catégorie est demandée via un id en
 else{ //si PAS de catégorie demandée via un id en URL
 
 	//séléction de tous les articles publiés
-	$query = $db->query('SELECT * FROM article WHERE is_published = 1 ORDER BY created_at DESC');
+	$query = $db->query('SELECT article.* , category.name AS category_name
+						FROM article
+						JOIN category 
+						ON article.category_id = category.id WHERE is_published = 1 ORDER BY created_at DESC');
 	$articles = $query->fetchAll();
 }
 
@@ -74,26 +77,12 @@ else{ //si PAS de catégorie demandée via un id en URL
 							
 							<!-- Si nous n'affichons pas une catégorie en particulier, je souhaite que le nom de la catégorie de chaque article apparaisse à côté de la date -->
 							<?php if(!isset($currentCategory)): ?>
-							<?php
-								//selection de la catégorie liée à l'article en cours d'affichage par la boucle
-                                $categoryname = $db->prepare('
-                                    SELECT art.* , cat.name AS category_name
-                                    FROM article art
-                                    JOIN category cat
-                                    ON art.category_id = cat.id
-                                    WHERE is_published = 1
-                                    ORDER BY created_at
-                                    DESC LIMIT 0, 3');
-                                $categoryname->execute( array( $_GET['category_id'] ) );
-							?>
-
-
-							<b class="article-category">[<?php echo $categoryname; ?>]</b>
+							<b class="article-category">[<?php echo $article['category_name']; ?>]</b>
 							<?php endif; ?>
 							
 							<!-- affichage des infos de chaque article de la boucle -->
 							<span class="article-date">Créé le <?php echo $article['created_at']; ?></span>
-							<div class="article-content">
+							<div class="article-summary">
 								<?php echo $article['summary']; ?>
 							</div>
 							<a href="article.php?article_id=<?php echo $article['id']; ?>">> Lire l'article</a>
