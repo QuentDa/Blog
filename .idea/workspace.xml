@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5880f560-4edb-49db-b6cc-692f329553ad" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/admin/articleform.php" afterPath="$PROJECT_DIR$/admin/articleform.php" />
-      <change beforePath="$PROJECT_DIR$/admin/articlelist.php" afterPath="$PROJECT_DIR$/admin/articlelist.php" />
-      <change beforePath="$PROJECT_DIR$/admin/categoryform.php" afterPath="$PROJECT_DIR$/admin/categoryform.php" />
-      <change beforePath="$PROJECT_DIR$/admin/categorylist.php" afterPath="$PROJECT_DIR$/admin/categorylist.php" />
-      <change beforePath="$PROJECT_DIR$/admin/index.php" afterPath="$PROJECT_DIR$/admin/index.php" />
-      <change beforePath="$PROJECT_DIR$/admin/partials/nav.php" afterPath="$PROJECT_DIR$/admin/partials/nav.php" />
-      <change beforePath="$PROJECT_DIR$/admin/user-form.php" afterPath="$PROJECT_DIR$/admin/user-form.php" />
-      <change beforePath="$PROJECT_DIR$/admin/user-list.php" afterPath="$PROJECT_DIR$/admin/user-list.php" />
-      <change beforePath="$PROJECT_DIR$/article.php" afterPath="$PROJECT_DIR$/article.php" />
-      <change beforePath="$PROJECT_DIR$/article_list.php" afterPath="$PROJECT_DIR$/article_list.php" />
-      <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change beforePath="$PROJECT_DIR$/partials/head_assets.php" afterPath="$PROJECT_DIR$/partials/head_assets.php" />
+      <change beforePath="$PROJECT_DIR$/login-register.php" afterPath="$PROJECT_DIR$/login-register.php" />
       <change beforePath="$PROJECT_DIR$/partials/nav.php" afterPath="$PROJECT_DIR$/partials/nav.php" />
-      <change beforePath="$PROJECT_DIR$/tools/_db.php" afterPath="$PROJECT_DIR$/tools/_db.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
@@ -36,15 +24,39 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="login-register.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login-register.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+              <folding>
+                <marker date="1518783500000" expanded="true" signature="307:358" ph="SELECT * FRO... user" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="nav.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/admin/partials/nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+            <state relative-caret-position="105">
+              <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
               <folding>
                 <marker date="1518739014000" expanded="true" signature="30:55" ph="SELECT COUNT... user" />
                 <marker date="1518739014000" expanded="true" signature="103:132" ph="SELECT COUNT... category" />
                 <marker date="1518739014000" expanded="true" signature="178:206" ph="SELECT COUNT... article" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nav.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/partials/nav.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+              <folding>
+                <marker date="1518783601000" expanded="true" signature="27:49" ph="SELECT * FRO... category" />
               </folding>
             </state>
           </provider>
@@ -69,8 +81,6 @@
         <option value="$PROJECT_DIR$/partials/head_assets.php" />
         <option value="$PROJECT_DIR$/tools/session.php" />
         <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/login-register.php" />
-        <option value="$PROJECT_DIR$/partials/nav.php" />
         <option value="$PROJECT_DIR$/tools/_db.php" />
         <option value="$PROJECT_DIR$/admin/articleform.php" />
         <option value="$PROJECT_DIR$/admin/articlelist.php" />
@@ -80,6 +90,8 @@
         <option value="$PROJECT_DIR$/admin/user-list.php" />
         <option value="$PROJECT_DIR$/admin/partials/nav.php" />
         <option value="$PROJECT_DIR$/admin/index.php" />
+        <option value="$PROJECT_DIR$/login-register.php" />
+        <option value="$PROJECT_DIR$/partials/nav.php" />
       </list>
     </option>
   </component>
@@ -132,6 +144,11 @@
               <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="partials" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="blog4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="blog4" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partials" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -169,12 +186,12 @@
       <option name="presentableId" value="Default" />
       <updated>1517492702071</updated>
       <workItem from="1517492703353" duration="1569000" />
-      <workItem from="1517494667797" duration="29186000" />
+      <workItem from="1517494667797" duration="29678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30755000" />
+    <option name="totallyTimeSpent" value="31247000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="958" extended-state="0" />
@@ -295,29 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/partials/nav.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <marker date="1518723443000" expanded="true" signature="27:49" ph="SELECT * FRO... category" />
-            <marker date="1518723443000" expanded="true" signature="653:886" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login-register.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="7" selection-end-column="1" />
-          <folding>
-            <marker date="1518723420000" expanded="true" signature="310:361" ph="SELECT * FRO... user" />
-            <marker date="1518723420000" expanded="true" signature="689:710" ph="SELECT * FRO... user" />
-            <marker date="1518723420000" expanded="true" signature="689:714" ph="SELECT is_ad... user" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/articleform.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -399,10 +393,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login-register.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
+          <folding>
+            <marker date="1518783500000" expanded="true" signature="307:358" ph="SELECT * FRO... user" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/admin/partials/nav.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="5" lean-forward="false" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
+        <state relative-caret-position="105">
+          <caret line="7" column="30" lean-forward="true" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
           <folding>
             <marker date="1518739014000" expanded="true" signature="30:55" ph="SELECT COUNT... user" />
             <marker date="1518739014000" expanded="true" signature="103:132" ph="SELECT COUNT... category" />
@@ -411,11 +423,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/index.php">
+    <entry file="file://$PROJECT_DIR$/partials/nav.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="480">
+          <caret line="32" column="6" lean-forward="true" selection-start-line="32" selection-start-column="6" selection-end-line="32" selection-end-column="6" />
+          <folding>
+            <marker date="1518783601000" expanded="true" signature="27:49" ph="SELECT * FRO... category" />
+          </folding>
         </state>
       </provider>
     </entry>

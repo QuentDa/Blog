@@ -8,30 +8,27 @@ if (isset($_SESSION['user'])){
 }
 
 if(isset($_POST['login'])) {
-
     if (empty($_POST['email']) OR empty($_POST['password'])) {
         $message = "Merci de remplir tous les champs";
     } else {
-
-
         $query = $db->prepare('SELECT * FROM user WHERE email = ? AND password = ?');
         $query->execute(array($_POST['email'], $_POST['password']));
         $user = $query->fetch();
-
         if ($user) {
+
+            //TADAM !!!
+            $_SESSION['is_admin'] = $user['is_admin'];
+            //vois les choses plus simplement, peu importe que le mec qui descend de ta base de donnée soit admin ou pas, tu lui créés son attribut de session avec la valeur de son is_admin (qui vaudra donc 1 pour les admins) ou 0 pour les bouzeux, et voilà tout...
+
 
             $_SESSION['user'] = $user['firstname'];
             header('location:index.php');
-
+            //je remets le exit, inutile de continuer le script
+            exit;
         } else {
             $message = 'Mauvais identifiants';
         }
-
-        $query = $db->query('SELECT is_admin FROM user');
-        $admin = $query->fetchall();
-        $_SESSION['is_admin'] = $user['is_admin'];
     }
-
 }
 
 

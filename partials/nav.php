@@ -9,7 +9,7 @@ $query = $db->query('SELECT * FROM category');
         <h3 class="text-center">Bonjour <?php echo $_SESSION['user'];?></h3>
 
         <?php if (isset($_SESSION['is_admin']) AND $_SESSION['is_admin'] == 1):?>
-            <a href="admin/index.php">Administration</a>
+            <a class="d-block btn btn-primary mb-4 mt-2" href="admin/index.php">Administration</a>
     <?php endif; ?>
 
         <a href="index.php?logout" class="d-block btn btn-danger mb-4 mt-2">Déconnexion</a>
