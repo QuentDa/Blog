@@ -14,12 +14,56 @@ if (isset($_POST['save']) ){
         ]
 
     );
+
+    //redirection après enregistrement
+    //si $newArticle alors l'enregistrement a fonctionné
+    if($newCategory){
+        //upload de l'image si image envoyée via le formulaire
+        if(isset($_FILES['image'])){
+            //tableau des extentions que l'on accepte d'uploader
+            $allowed_extensions = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+            //extension dufichier envoyé via le formulaire
+            $my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
+            //si l'extension du fichier envoyé est présente dans le tableau des extensions acceptées
+            if ( in_array($my_file_extension , $allowed_extensions) ){
+
+                //je génrère une chaîne de caractères aléatoires qui servira de nom de fichier
+                //le but étant de ne pas écraser un éventuel fichier ayant le même nom déjà sur le serveur
+                $new_file_name = md5(rand());
+
+                //destination du fichier sur le serveur (chemin + nom complet avec extension)
+                $destination = '../image/category/' . $new_file_name . '.' . $my_file_extension;
+                //déplacement du fichier à partir du dossier temporaire du serveur vers sa destination
+                $result = move_uploaded_file( $_FILES['image']['tmp_name'], $destination);
+                //on récupère l'id du dernier enregistrement en base de données (ici l'article inséré ci-dessus)
+                $lastInsertedCategoryId = $db->lastInsertId();
+
+                //mise à jour de l'article enregistré ci-dessus avec le nom du fichier image qui lui sera associé
+                $query = $db->prepare('UPDATE category SET
+					image = :image
+					WHERE id = :id'
+                );
+                $resultUpdateImage = $query->execute(
+                    [
+                        'image' => $new_file_name . '.' . $my_file_extension,
+                        'id' => $lastInsertedCategoryId
+                    ]
+                );
+            }
+        }
+
+        header('location:categorylist.php');
+        exit;
+    }
+    else {
+        $message = "Impossible d'enregistrer la nouvelle categorie...";
+    }
 }
 //Si $_POST['update'] existe, cela signifie que c'est une mise à jour d'utilisateur
 if(isset($_POST['update'])){
 
     $query = $db->prepare('UPDATE category SET
-		name = :name
+		name = :name,
 		description = :description
 		WHERE id = :id'
     );
@@ -86,7 +130,10 @@ if(isset($_GET['category_id']) && isset($_GET['action']) && $_GET['action'] == '
             <form method="post" action="categoryform.php">
                 <input class="form-control" type="text" name="name" placeholder="Nom de la catégorie" <?php if(isset($category)): ?>value="<?php echo $category['name']?>"<?php endif; ?> /> <br />
                 <textarea class="form-control" name="description" rows="5" cols="10"><?php if(isset($category)): ?><?php echo $category['description']?><?php endif; ?></textarea><br />
-
+                <div class="form-group">
+                    <label for="summary">Image :</label>
+                    <input class="form-control" type="file" name="image" id="image" />
+                </div>
                 <div class="text-right">
                     <!-- Si $user existe, on affiche un lien de mise à jour -->
                     <?php if(isset($category)): ?>

@@ -11,7 +11,7 @@ $query = $db->query('SELECT * FROM category');
         <?php if (isset($_SESSION['is_admin']) AND $_SESSION['is_admin'] == 1):?>
             <a class="d-block btn btn-primary mb-4 mt-2" href="admin/index.php">Administration</a>
     <?php endif; ?>
-
+        <a href="userinfo.php" class="btn btn-warning">Modifier son compte</a>
         <a href="index.php?logout" class="d-block btn btn-danger mb-4 mt-2">Déconnexion</a>
 
 

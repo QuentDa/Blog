@@ -50,6 +50,7 @@ if(isset($_GET['logout']) && isset($_SESSION['user'])){
 							<span class="article-date">Créé le <?php echo $article['created_at']; ?></span>
 							<div class="article-content">
 								<?php echo $article['summary']; ?>
+                                <img class="d-block w-25" src="image/article/<?php echo $article['image'] ?>" alt="">
 							</div>
 							<a href="article.php?article_id=<?php echo $article['id']; ?>">> Lire l'article</a>
 						</article>

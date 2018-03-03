@@ -49,7 +49,8 @@ else{ //si article_id n'est pas envoyé en URL, renvoyer l'utilisateur vers la p
 			<main class="col-9">
 				<article>
 					<h1><?php echo $article['title']; ?></h1>
-					<b class="article-category">[<?php echo $article['category_name']; ?>]</b>
+                    <img class="d-block w-25" src="image/article/<?php echo $article['image'] ?>" alt="">
+                    <b class="article-category">[<?php echo $article['category_name']; ?>]</b>
 					<span class="article-date">Créé le <?php echo $article['created_at']; ?></span>
 					<div class="article-content">
 						<?php echo $article['content']; ?>

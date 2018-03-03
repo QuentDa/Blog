@@ -74,8 +74,9 @@ else{ //si PAS de catégorie demandée via un id en URL
 						<?php foreach($articles as $key => $article): ?>
 						<article class="mb-4">
 							<h2><?php echo $article['title']; ?></h2>
-							
-							<!-- Si nous n'affichons pas une catégorie en particulier, je souhaite que le nom de la catégorie de chaque article apparaisse à côté de la date -->
+                            <img class="d-block w-25" src="image/article/<?php echo $article['image'] ?>" alt="">
+
+                            <!-- Si nous n'affichons pas une catégorie en particulier, je souhaite que le nom de la catégorie de chaque article apparaisse à côté de la date -->
 							<?php if(!isset($currentCategory)): ?>
 							<b class="article-category">[<?php echo $article['category_name']; ?>]</b>
 							<?php endif; ?>
