@@ -17,7 +17,7 @@ if (isset($_POST['save']) ){
 
     //redirection après enregistrement
     //si $newArticle alors l'enregistrement a fonctionné
-    if($newCategory){
+    if($newCategory) {
         //upload de l'image si image envoyée via le formulaire
         if(isset($_FILES['image'])){
             //tableau des extentions que l'on accepte d'uploader
@@ -127,7 +127,7 @@ if(isset($_GET['category_id']) && isset($_GET['action']) && $_GET['action'] == '
                 </div>
             <?php endif; ?>
 
-            <form method="post" action="categoryform.php">
+            <form method="post" action="categoryform.php" enctype="multipart/form-data">
                 <input class="form-control" type="text" name="name" placeholder="Nom de la catégorie" <?php if(isset($category)): ?>value="<?php echo $category['name']?>"<?php endif; ?> /> <br />
                 <textarea class="form-control" name="description" rows="5" cols="10"><?php if(isset($category)): ?><?php echo $category['description']?><?php endif; ?></textarea><br />
                 <div class="form-group">

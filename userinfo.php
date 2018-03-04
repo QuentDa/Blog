@@ -1,12 +1,12 @@
 <?php
 require_once 'tools/_db.php';
 
-//Si $_POST['update'] existe, cela signifie que c'est une mise à jour d'utilisateur
 if (!isset($_SESSION['user'])){
     header('location:index.php');
 }
+
     $query = $db->prepare('SELECT * FROM user WHERE id = ?');
-    $query->execute(array($_SESSION['user']));
+    $query->execute(array($_SESSION['id']));
     $user = $query->fetch();
 
 if(isset($_POST['update'])){
@@ -73,45 +73,36 @@ if(isset($_POST['update'])){
 
             <!-- Si $user existe, chaque champ du formulaire sera pré-remplit avec les informations de l'utilisateur -->
 
-            <form action="userinfo.php" method="post">
-                <div class="form-group">
-                    <label for="firstname">Prénom :</label>
-                    <input class="form-control" value="<?php echo $user['firstname']?>" type="text" placeholder="Prénom" name="firstname" id="firstname" />
-                </div>
-                <div class="form-group">
-                    <label for="lastname">Nom de famille : </label>
-                    <input class="form-control" value="<?php echo $user['lastname']?>" type="text" placeholder="Nom de famille" name="lastname" id="lastname" />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email :</label>
-                    <input class="form-control" value="<?php echo $user['email']?>" type="email" placeholder="Email" name="email" id="email" />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password : </label>
-                    <input class="form-control" value="<?php echo $user['password']?>" type="password" placeholder="Mot de passe" name="password" id="password" />
-                </div>
-                <div class="form-group">
-                    <label for="bio">Biographie :</label>
-                    <textarea class="form-control" name="bio" id="bio" placeholder="Sa vie son oeuvre..."><?php echo $user['bio']?></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="is_admin">Admin</label>
-                    <input class="form-control" type="text" name="is_admin" id="is_admin">  
-                </div>
-
-                <div class="text-right">
-                    <!-- Si $user existe, on affiche un lien de mise à jour -->
-                    <?php if(isset($user)): ?>
+            <div class="col-12">
+                <form action="profile.php" method="post" class="w-100">
+                    <div class="form-group">
+                        <label for="firstname">Prénom :</label>
+                        <input class="form-control" value="<?php echo $user['firstname']; ?>" type="text" placeholder="Prénom" name="firstname" id="firstname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Nom de famille : </label>
+                        <input class="form-control" value="<?php echo $user['lastname']?>" type="text" placeholder="Nom de famille" name="lastname" id="lastname" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email :</label>
+                        <input class="form-control" value="<?php echo $user['email']?>" type="email" placeholder="Email" name="email" id="email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password : </label>
+                        <input class="form-control" value="<?php echo $user['password']?>" type="password" placeholder="Mot de passe" name="password" id="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bio">Biographie :</label>
+                        <textarea class="form-control" name="bio" id="bio" placeholder="Sa vie son oeuvre..."><?php echo $user['bio']?></textarea>
+                    </div>
+                    <div class="text-right">
                         <input class="btn btn-success" type="submit" name="update" value="Mettre à jour" />
+                    </div>
+                    <?php if(isset($user)): ?>
+                        <input type="hidden" name="id" value="<?php echo $user['id']?>" />
                     <?php endif; ?>
-                </div>
-
-                <!-- Si $user existe, on ajoute un champ caché contenant l'id de l'utilisateur à modifier pour la requête UPDATE -->
-                <?php if(isset($user)): ?>
-                    <input type="hidden" name="id" value="<?php echo $user['id']?>" />
-                <?php endif; ?>
-
-            </form>
+                </form>
+            </div>
         </section>
     </div>
 
