@@ -24,6 +24,8 @@ if(isset($_POST['login'])) {
             $_SESSION['user'] = $user['firstname'];
             header('location:index.php');
             //je remets le exit, inutile de continuer le script
+
+            $_SESSION['id'] = $user['id'];
             exit;
         } else {
             $message = 'Mauvais identifiants';
